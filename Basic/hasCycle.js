@@ -13,16 +13,16 @@ function hasCycle(head) {
         fast = fast.next.next;
 
         if (slow === fast) {
-            return true; // Cycle detected
+            return true; 
         }
     }
-    return false; // No cycle
+    return false; 
 }
 
 // Example usage:
 const head = new ListNode(1);
 head.next = new ListNode(2);
 head.next.next = new ListNode(3);
-head.next.next.next = head; // Creating a cycle
+head.next.next.next = head; 
 
-console.log(hasCycle(head)); // Output: true
+console.log(hasCycle(head)); 

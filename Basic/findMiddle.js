@@ -9,16 +9,16 @@ function findMiddle(head) {
     let slow = head, fast = head;
 
     while (fast !== null && fast.next !== null) {
-        slow = slow.next;        // Move slow by 1
-        fast = fast.next.next;   // Move fast by 2
+        slow = slow.next;        
+        fast = fast.next.next;   
     }
     
-    return slow; // Middle node
+    return slow; 
 }
 
-// Example usage:
+
 const head = new ListNode(1);
 head.next = new ListNode(2);
 head.next.next = new ListNode(3);
 
-console.log(findMiddle(head)); // Output: 2
+console.log(findMiddle(head)); 

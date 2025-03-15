@@ -10,19 +10,18 @@ function reverseLinkedList(head) {
     let current = head;
     
     while (current !== null) {
-        let next = current.next; // Store next node
-        current.next = prev;     // Reverse the link
-        prev = current;          // Move prev forward
-        current = next;          // Move current forward
+        let next = current.next; 
+        current.next = prev;     
+        prev = current;         
+        current = next;         
     }
-    return prev; // New head of reversed list
+    return prev; 
 }
 
-// Example usage:
+
 const head = new ListNode(1);
 head.next = new ListNode(2);
 head.next.next = new ListNode(3);
 
 const reversed = reverseLinkedList(head);
-console.log(reversed); // Output: [3, 2, 1]
-    
+console.log(reversed); 
