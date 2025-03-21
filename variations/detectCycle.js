@@ -1,11 +1,14 @@
 function detectCycle(head) {
-    let slow = head, fast = head;
+    let slow = head;
+    let  fast = head;
 
     while (fast !== null && fast.next !== null) {
-        slow = slow.next;         // Move 1 step
-        fast = fast.next.next;     // Move 2 steps
+        slow = slow.next;         
+        fast = fast.next.next;     
 
-        if (slow === fast) return true; // Cycle detected
+        if (slow === fast) return true;
     }
     return false;
 }
+
+

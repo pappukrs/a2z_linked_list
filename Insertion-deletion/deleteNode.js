@@ -8,10 +8,15 @@ class ListNode {
 
 
 function deleteNode(node) {
-    if (!node || !node.next) return; // Cannot delete if it's last node
 
-    node.value = node.next.value; // Copy next node's value
-    node.next = node.next.next;   // Remove next node
+    // Cannot delete if it's last node
+    if (!node || !node.next) return; 
+
+
+    // Copy next node's value
+    node.value = node.next.value; 
+    // Remove next node
+    node.next = node.next.next;   
 }
 
 
@@ -47,7 +52,7 @@ console.log(head3.next.next);  // Expected output: null
 
 
 
-    
+
 
 
 

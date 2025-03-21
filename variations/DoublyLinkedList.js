@@ -1,57 +1,104 @@
-class DoublyListNode {
+class Node {
     constructor(value) {
         this.value = value;
-        this.prev = null; // Pointer to previous node
-        this.next = null; // Pointer to next node
+        this.next = null;  
+        this.prev = null;  
     }
 }
 
 class DoublyLinkedList {
     constructor() {
-        this.head = null;
-        this.tail = null;
+        this.head = null; 
+        this.tail = null; 
+        this.size = 0;    
     }
 
-    // Insert at the end
-    insertAtEnd(value) {
-        let newNode = new DoublyListNode(value);
-        if (!this.head) {
-            this.head = this.tail = newNode;
-        } else {
-            this.tail.next = newNode;
-            newNode.prev = this.tail;
-            this.tail = newNode;
-        }
-    }
-
-    // Insert at the beginning
     insertAtBeginning(value) {
-        let newNode = new DoublyListNode(value);
+        const newNode = new Node(value);
         if (!this.head) {
-            this.head = this.tail = newNode;
+            this.head = this.tail = newNode; 
         } else {
             newNode.next = this.head;
             this.head.prev = newNode;
             this.head = newNode;
         }
+        this.size++;
     }
 
-    // Display the list
-    display() {
+    insertAtEnd(value) {
+        const newNode = new Node(value);
+        if (!this.tail) {
+            this.head = this.tail = newNode;
+        } else {
+            newNode.prev = this.tail;
+            this.tail.next = newNode;
+            this.tail = newNode;
+        }
+        this.size++;
+    }
+
+    deleteFromBeginning() {
+        if (!this.head) return null;
+        let removedValue = this.head.value;
+        this.head = this.head.next;
+        if (this.head) {
+            this.head.prev = null;
+        } else {
+            this.tail = null; 
+        }
+        this.size--;
+        return removedValue;
+    }
+
+    deleteFromEnd() {
+        if (!this.tail) return null;
+        let removedValue = this.tail.value;
+        this.tail = this.tail.prev;
+        if (this.tail) {
+            this.tail.next = null;
+        } else {
+            this.head = null; 
+        }
+        this.size--;
+        return removedValue;
+    }
+
+    printForward() {
         let current = this.head;
-        let result = [];
+        let listStr = "NULL ⇄ ";
         while (current) {
-            result.push(current.value);
+            listStr += `[ ${current.value} ] ⇄ `;
             current = current.next;
         }
-        console.log(result.join(" <-> "));
+        listStr += "NULL";
+        console.log(listStr);
+    }
+
+    printBackward() {
+        let current = this.tail;
+        let listStr = "NULL ⇄ ";
+        while (current) {
+            listStr += `[ ${current.value} ] ⇄ `;
+            current = current.prev;
+        }
+        listStr += "NULL";
+        console.log(listStr);
     }
 }
 
-// Usage
-let dll = new DoublyLinkedList();
-dll.insertAtEnd(10);
-dll.insertAtEnd(20);
+const dll = new DoublyLinkedList();
+dll.insertAtBeginning(10);
+dll.insertAtBeginning(20);
 dll.insertAtEnd(30);
-dll.insertAtBeginning(5);
-dll.display(); // Output: 5 <-> 10 <-> 20 <-> 30
+dll.insertAtEnd(40);
+
+console.log("Forward Traversal:");
+dll.printForward(); 
+
+console.log("Backward Traversal:");
+dll.printBackward(); 
+dll.deleteFromBeginning();
+dll.deleteFromEnd();
+
+console.log("After Deletion:");
+dll.printForward(); 

@@ -7,16 +7,23 @@ class ListNode {
 
 function insertAtEnd(head, value) {
     let newNode = new ListNode(value);
-    
-    if (!head) return newNode; // If list is empty, new node is head
+
+
+    if (!head) return newNode;
 
     let current = head;
     while (current.next !== null) {
-        current = current.next; // Traverse to the last node
+        current = current.next; 
+
+
     }
-    current.next = newNode; // Link last node to new node
+    current.next = newNode; 
     return head;
 }
+
+
+
+
 
 // Test case 1: Insert into an empty list
 let head = null;

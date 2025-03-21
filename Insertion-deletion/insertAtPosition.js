@@ -23,7 +23,7 @@ function insertAtPosition(head, value, position) {
         count++;
     }
 
-    if (!current) return head; // If position is greater than list length
+    if (!current) return head; 
 
     newNode.next = current.next;
     current.next = newNode;
